@@ -3,7 +3,7 @@ import { LeagueComponent } from './containers/league.component'
 
 const routes: Routes = [
     {
-        path: '',
+        path: ':id',
         component: LeagueComponent
     }
 ];
