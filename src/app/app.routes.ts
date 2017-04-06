@@ -5,6 +5,10 @@ const appRoutes: Routes = [
     {
         path: '',
         component: HomeComponent
+    },
+    {
+        path: 'app',
+        loadChildren: './mathbet/mathbet.module#MathBetModule',
     }
 ];
 
