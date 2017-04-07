@@ -4,13 +4,25 @@
       <div class="col-lg-6">
         <div class="form-group" [ngClass]="{'has-error': isSubmited && myGroup.controls['homeTeam'] && !myGroup.controls.homeTeam.valid}">
           <label for="exampleInputEmail1">Home Team</label>
-          <input type="text" class="form-control" formControlName="homeTeam" placeholder="Enter Home Team">
+          <select class="form-control"
+                  formControlName="homeTeam">
+              <option value=""></option>
+              <option *ngFor="let team of allTeams" [value]="team">
+                  {{ team }}
+              </option>
+          </select>
         </div>
       </div>
       <div class="col-lg-6">
         <div class="form-group" [ngClass]="{'has-error': isSubmited && myGroup.controls['awayTeam'] && !myGroup.controls.awayTeam.valid}">
           <label for="exampleInputEmail1">Away Team</label>
-          <input type="text" class="form-control" formControlName="awayTeam" placeholder="Enter Away Team">
+          <select class="form-control"
+                  formControlName="awayTeam">
+              <option value=""></option>
+              <option *ngFor="let team of allTeams" [value]="team">
+                  {{ team }}
+              </option>
+          </select>
         </div>
       </div>
     </div>

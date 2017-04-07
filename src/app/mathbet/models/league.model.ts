@@ -9,6 +9,15 @@ export class LeagueModel {
         return this.data;
     }
 
+    public getTeams(){
+        let allTeams = [];
+        this.data.map(t => {
+            if(allTeams.indexOf(t.HomeTeam) === -1) {
+                allTeams.push(t.HomeTeam);
+            }
+        })
+        return allTeams;
+    }
     public getHomeTeam(teamName: string): Array<Object> {
         let teamMatches = this.data.filter(match => match.HomeTeam === teamName);
         return teamMatches;

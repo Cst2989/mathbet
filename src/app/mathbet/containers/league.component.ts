@@ -16,6 +16,8 @@ export class LeagueComponent implements OnInit {
   public showInfo: boolean = false;
   public data: any;
 
+  public allTeams: any;
+
   public myGroup: FormGroup;
   public overValue: number ;
   public underValue: number ;
@@ -39,6 +41,7 @@ export class LeagueComponent implements OnInit {
           this.isSubmited = false;
           this.showInfo = false;
           this.data = r;
+          this.allTeams = this.data.getTeams();
           this.isLoaded = true;
           this.myGroup = new FormGroup({
             homeTeam: new FormControl('', Validators.required),
