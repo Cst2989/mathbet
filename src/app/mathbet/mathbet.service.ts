@@ -12,7 +12,7 @@ export class MathService {
 
 
     public load(id: string): Observable<Object> {
-        return this.http.get('./data/' + id + '.json')
+        return this.http.get('/data/' + id + '.json')
             .map((res:Response) => res.json())
             .map(r=> new LeagueModel(r))
     }
