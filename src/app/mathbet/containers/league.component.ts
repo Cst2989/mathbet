@@ -22,6 +22,10 @@ export class LeagueComponent implements OnInit {
   public overValue: number ;
   public underValue: number ;
 
+  public homeWin: number;
+  public awayWin: number;
+  public draw: number;
+
 
   public leagueAtackStrength: number;
 
@@ -47,6 +51,7 @@ export class LeagueComponent implements OnInit {
             homeTeam: new FormControl('', Validators.required),
             awayTeam: new FormControl('', Validators.required)
           });
+
         })
   }
 
@@ -78,6 +83,9 @@ export class LeagueComponent implements OnInit {
     let away1 = this.probabilityCalc(1, predictedAwayGoals);
     let away2 = this.probabilityCalc(2, predictedAwayGoals);
 
+    this.homeWin = this.data.getHomeWin(HomeTeam, AwayTeam);
+    this.awayWin = this.data.getAwayWin(HomeTeam, AwayTeam);
+    this.draw = this.data.getDraw(HomeTeam, AwayTeam);
     this.underValue = ((home0*away0) + (home1*away0) + (home0*away1) + (home1*away1) + (home2*away0) + (home0*away2)) * 100;
     this.overValue= 100 - this.underValue ;
 

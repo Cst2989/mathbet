@@ -29,13 +29,25 @@
   <button (click)="onSubmit()" class="btn btn-primary">Submit</button>
   <div *ngIf="showInfo">
     <div class="row marketing">
-      <div class="col-lg-6">
-          <h2>Over 2.5</h2>
+      <div class="col-lg-3">
+          <h4>Over 2.5</h4>
           <div class="value">{{ overValue }}</div>
       </div>
-      <div class="col-lg-6">
-          <h2>Under 2.5</h2>
+      <div class="col-lg-3">
+          <h4>Under 2.5</h4>
           <div class="value">{{ underValue }}</div>
+      </div>
+      <div class="col-lg-2">
+          <h4>Home Win</h4>
+          <div class="value">{{ homeWin }}</div>
+      </div>
+      <div class="col-lg-2">
+          <h4>Away Win</h4>
+          <div class="value">{{ awayWin }}</div>
+      </div>
+      <div class="col-lg-2">
+          <h4>Draw</h4>
+          <div class="value">{{ draw }}</div>
       </div>
     </div>
 
