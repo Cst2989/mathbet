@@ -3,3 +3,27 @@
     border:1px solid red;
   }
 }
+.team-card {
+  width: 150px;
+  height: 30px;
+  background-color: #ccc;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  margin:5px;
+  position: relative;
+  display: block;
+  cursor: move;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+.drop-div {
+  height: 40px;
+  position: relative;
+  border:2px dotted #ccc;
+}

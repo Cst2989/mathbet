@@ -1,55 +1,54 @@
 <div *ngIf="isLoaded">
-  <h2>Choose Teams:</h2>
-    <div class="row marketing" [formGroup]="myGroup">
-      <div class="col-lg-6">
-        <div class="form-group" [ngClass]="{'has-error': isSubmited && myGroup.controls['homeTeam'] && !myGroup.controls.homeTeam.valid}">
-          <label for="exampleInputEmail1">Home Team</label>
-          <select class="form-control"
-                  formControlName="homeTeam">
-              <option value=""></option>
-              <option *ngFor="let team of allTeams" [value]="team">
-                  {{ team }}
-              </option>
-          </select>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="form-group" [ngClass]="{'has-error': isSubmited && myGroup.controls['awayTeam'] && !myGroup.controls.awayTeam.valid}">
-          <label for="exampleInputEmail1">Away Team</label>
-          <select class="form-control"
-                  formControlName="awayTeam">
-              <option value=""></option>
-              <option *ngFor="let team of allTeams" [value]="team">
-                  {{ team }}
-              </option>
-          </select>
-        </div>
-      </div>
-    </div>
-  <button (click)="onSubmit()" class="btn btn-primary">Submit</button>
-  <div *ngIf="showInfo">
-    <div class="row marketing">
-      <div class="col-lg-3">
-          <h4>Over 2.5</h4>
-          <div class="value">{{ overValue }}</div>
-      </div>
-      <div class="col-lg-3">
-          <h4>Under 2.5</h4>
-          <div class="value">{{ underValue }}</div>
-      </div>
-      <div class="col-lg-2">
-          <h4>Home Win</h4>
-          <div class="value">{{ homeWin }}</div>
-      </div>
-      <div class="col-lg-2">
-          <h4>Away Win</h4>
-          <div class="value">{{ awayWin }}</div>
-      </div>
-      <div class="col-lg-2">
-          <h4>Draw</h4>
-          <div class="value">{{ draw }}</div>
-      </div>
-    </div>
-
-  </div>
+	<h2>Drag and Drop teams:</h2>
+	<div class="row marketing" >
+		<div class="col-md-3">
+			<div  *ngFor="let team of allTeams">
+				<span class="team-card" draggable="true" (dragstart)="drag($event, team)">{{ team }}</span>
+			</div>
+		</div>
+		<div class="col-md-9 ">
+			<div class="drop_zone" [formGroup]="form">
+				<table class="table"  formArrayName="matches">
+          <tr>
+            <th width="15%">Home Team</th>
+            <th width="15%">Away Team</th>
+            <th>Home Victory</th>
+            <th>Draw</th>
+            <th>Away Victory</th>
+            <th>Over 2.5</th>
+            <th>Under 2.5</th>
+          </tr>
+					<tr *ngFor="let match of form.get('matches').controls; let i = index;" [formGroupName]="i" class="match">
+						<td >
+							<div *ngIf="!form.get('matches').get(i.toString()).get('homeTeam').value" (dragover)="dragOver($event)" (drop)="drop($event, 'homeTeam', i)" class="drop-div">
+								<input class="form-control"
+                       id="dyed_available_stock"
+                       type="hidden"
+                       formControlName="homeTeam">
+							</div>
+              <div *ngIf="form.get('matches').get(i.toString()).get('homeTeam').value">
+                {{ form.get('matches').get(i.toString()).get('homeTeam').value }}
+              </div>
+						</td>
+						<td >
+							<div *ngIf="!form.get('matches').get(i.toString()).get('awayTeam').value" (dragover)="dragOver($event)" (drop)="drop($event, 'awayTeam', i)" class="drop-div">
+									<input class="form-control"
+                         id="dyed_city"
+                         type="hidden"
+                         formControlName="awayTeam">
+							</div>
+              <div *ngIf="form.get('matches').get(i.toString()).get('awayTeam').value">
+                {{ form.get('matches').get(i.toString()).get('awayTeam').value }}
+              </div>
+						</td>
+            <td>  {{ form.get('matches').get(i.toString()).get('homeWin').value | number:'1.2-2' }} %</td>
+            <td>  {{ form.get('matches').get(i.toString()).get('draw').value | number:'1.2-2' }} %</td>
+            <td>  {{ form.get('matches').get(i.toString()).get('awayWin').value | number:'1.2-2' }} %</td>
+            <td>  {{ form.get('matches').get(i.toString()).get('over').value | number:'1.2-2' }} %</td>
+            <td>  {{ form.get('matches').get(i.toString()).get('under').value | number:'1.2-2'  }} %</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
 </div>
