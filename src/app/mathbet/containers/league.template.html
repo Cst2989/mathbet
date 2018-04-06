@@ -41,9 +41,9 @@
                 {{ form.get('matches').get(i.toString()).get('awayTeam').value }}
               </div>
 						</td>
-            <td [ngClass]="{'has-value': form.get('matches').get(i.toString()).get('homeWin').value > 65}">  {{ form.get('matches').get(i.toString()).get('homeWin').value | number:'1.2-2' }} %</td>
-            <td [ngClass]="{'has-value': form.get('matches').get(i.toString()).get('draw').value > 65}">  {{ form.get('matches').get(i.toString()).get('draw').value | number:'1.2-2' }} %</td>
-            <td [ngClass]="{'has-value': form.get('matches').get(i.toString()).get('awayWin').value > 65}">  {{ form.get('matches').get(i.toString()).get('awayWin').value | number:'1.2-2' }} %</td>
+            <td [ngClass]="{'has-value': form.get('matches').get(i.toString()).get('homeWin').value > 55}">  {{ form.get('matches').get(i.toString()).get('homeWin').value | number:'1.2-2' }} %</td>
+            <td [ngClass]="{'has-value': form.get('matches').get(i.toString()).get('draw').value > 55}">  {{ form.get('matches').get(i.toString()).get('draw').value | number:'1.2-2' }} %</td>
+            <td [ngClass]="{'has-value': form.get('matches').get(i.toString()).get('awayWin').value > 55}">  {{ form.get('matches').get(i.toString()).get('awayWin').value | number:'1.2-2' }} %</td>
             <td [ngClass]="{'has-value': form.get('matches').get(i.toString()).get('over').value > 65}">  {{ form.get('matches').get(i.toString()).get('over').value | number:'1.2-2' }} %</td>
             <td [ngClass]="{'has-value': form.get('matches').get(i.toString()).get('under').value > 65}">  {{ form.get('matches').get(i.toString()).get('under').value | number:'1.2-2'  }} %</td>
 					</tr>
